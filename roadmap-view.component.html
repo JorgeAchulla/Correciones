@@ -1,0 +1,99 @@
+<button class="close" mat-button mat-dialog-close="false">X</button>
+
+
+
+<mat-dialog-content>
+  <form [formGroup]="roadMapForm" [fxLayoutGap]="formGap" >
+
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap" class="centrado">
+        <!--<mat-label>RUTA</mat-label>-->
+      <input type="text" matInput formControlName="code" class="titulo">
+        <mat-error *ngFor="let validation of errors.roadMap.code" >
+          <mat-error class="error-message"
+                     *ngIf="roadMapForm.get('code').hasError(validation.type)">
+            {{validation.message}}
+          </mat-error>
+        </mat-error>
+    </div>
+
+
+
+    <div class="divA">
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Fecha Programada</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="scheduledDate">
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Zona</mat-label>
+        <input type="text" matInput formControlName="deliveryZone">
+      </mat-form-field>
+    </div>
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Numero aprox. de dias habiles de entrega</mat-label>
+        <input type="text" matInput formControlName="duration">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex="">
+        <mat-label>Vehiculo</mat-label>
+        <input type="text" matInput formControlName="vehiculeLicensePlate">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Conductor</mat-label>
+        <input type="text" matInput formControlName="driverName">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Axuliar de ruta</mat-label>
+        <input type="text" matInput formControlName="userAsigned">
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+      <mat-form-field fxFlex>
+        <mat-label>Numero de entregas</mat-label>
+        <input type="text" matInput formControlName="totalDocuments">
+      </mat-form-field>
+    </div>
+
+    </div>
+
+
+  <div class="divB">
+      <div class="map" fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap">
+        <img src=""><img src="../../../assets/img/map.png" height="300" width="350"/>
+      </div>
+
+      <div class="status" fxLayout="column" fxLayout.gt-sm="row" [fxLayoutGap]="formChildGap" >
+          STATUS:  <input  type="text" matInput  formControlName="statusColor" >
+      </div>
+
+  </div>
+
+
+
+
+
+
+  </form>
+</mat-dialog-content>
+<app-bit-alert-error-server [openModal]="openModalError"></app-bit-alert-error-server>
